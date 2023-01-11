@@ -45,57 +45,70 @@ const App: FC = () => {
   }, [])
 
   return (
-    <>
-      <img src="http://localhost:8000/video_feed1/" width={800} />
+    <div className="frame">
+      <div className="inner">
+        <img src="http://localhost:8000/video_feed1/" />
 
+        <div className="info">
+          {(!accidents || !status) && (
+            <p>Loading...</p>
+          )}
+          
+          {status && (
+            <div>
+              <p>차량 수: {status.vehicleCount}대</p>
+              <p>교통 신호: <span style={{ color: status.trafficLight === 'GREEN' ? 'yellowgreen' : 'red' }}>{status.trafficLight}</span></p>
+            </div>
+          )}
 
-      {(!accidents || !status) && (
-        <p>Loading...</p>
-      )}
-      
-      {status && (
-        <div>
-          <p>차량 수: {status.vehicleCount}대</p>
-          <p>신호: {status.trafficLight}</p>
+          <hr />
+
+          {stats && (
+            <div>
+              1시간 기준 위반수
+              <ul>
+                {Object.keys(stats).map((stat, i) => (
+                  <li key={i}>
+                    {stat}: {stats[stat]}대
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
-      {stats && (
-        <div>
-          1시간 기준
-          <ul>
-            {Object.keys(stats).map((stat, i) => (
-              <li key={i}>
-                {stat}: {stats[stat]}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {accidents && (
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>트래킹id</th>
-              <th>위반분류</th>
-              <th>위반시간</th>
-            </tr>
-          </thead>
-          <tbody>
-            {accidents.map((accident, i) => (
-              <tr key={i}>
-                <td>{accident.id}</td>
-                <td>{accident.vehicleId}</td>
-                <td>{accident.type.label}</td>
-                <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
+        <div className="table">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>트래킹id</th>
+                <th>위반분류</th>
+                <th>위반시각</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {accidents.length < 1 && (
+                <tr>
+                  <td colSpan={4}>위반사항이 없습니다</td>
+                </tr>
+              )}
+              {accidents.map((accident, i) => (
+                <tr key={i}>
+                  <td>{accident.id}</td>
+                  <td>{accident.vehicleId}</td>
+                  <td>{accident.type.label}</td>
+                  <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
-    </>
+    </div>
   )
 }
 
