@@ -8,6 +8,7 @@ type StatusDto = {
 }
 
 const App: FC = () => {
+  const [fullscreen, setFullscreen] = useState(false)
   const [accidents, setAccidents] = useState<object | undefined>(undefined)
   const [stats, setStats] = useState<Record<string, number> | undefined>(undefined)
   const [status, setStatus] = useState<StatusDto | undefined>(undefined)
@@ -26,9 +27,10 @@ const App: FC = () => {
       .then((res) => res.json())
       .then((res) => res.success && setStatus(res.data?.status))
 
-  const createEventListener = (eventUrl: string, onMessage: () => any) =>
-    new EventSource(eventUrl)
-      .addEventListener('message', onMessage)
+  const createEventListener =
+    (eventUrl: string, onMessage: () => any) =>
+      new EventSource(eventUrl)
+        .addEventListener('message', onMessage)
       
   const createAccidentsEventHandler = () =>
     createEventListener('/accidents/@event', fetchAccidents)
@@ -47,7 +49,7 @@ const App: FC = () => {
   return (
     <div className="frame">
       <div className="inner">
-        <img src="http://localhost:8000/video_feed1/" />
+        <img onClick={() => setFullscreen(!fullscreen)} className={fullscreen ? 'fullscreen' : ''} src="https://cdn.discordapp.com/attachments/837242003862716436/1061886079285866596/index.png" />
 
         <div className="info">
           {(!accidents || !status) && (
@@ -85,7 +87,7 @@ const App: FC = () => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>트래킹id</th>
+                <th>차량사진</th>
                 <th>위반분류</th>
                 <th>위반시각</th>
               </tr>
@@ -99,7 +101,7 @@ const App: FC = () => {
               {accidents.map((accident, i) => (
                 <tr key={i}>
                   <td>{accident.id}</td>
-                  <td>{accident.vehicleId}</td>
+                  <td><img src={accident.vehicle.vehiclePicture} width={100} /></td>
                   <td>{accident.type.label}</td>
                   <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                 </tr>
