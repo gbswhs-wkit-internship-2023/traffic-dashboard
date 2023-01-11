@@ -32,6 +32,10 @@ img {
   cursor: pointer;
 }
 
+img.car {
+  width: 100px;
+}
+
 img.fullscreen {
   position: absolute;
   left: 50%;

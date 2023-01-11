@@ -101,7 +101,7 @@ const App: FC = () => {
               {accidents.map((accident, i) => (
                 <tr key={i}>
                   <td>{accident.id}</td>
-                  <td><img src={accident.vehicle.vehiclePicture} width={100} /></td>
+                  <td><img className="car" src={accident.vehicle.picture} width={100} /></td>
                   <td>{accident.type.label}</td>
                   <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                 </tr>
