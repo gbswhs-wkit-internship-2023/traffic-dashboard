@@ -49,7 +49,7 @@ const App: FC = () => {
   return (
     <div className="frame">
       <div className="inner">
-        <img onClick={() => setFullscreen(!fullscreen)} className={fullscreen ? 'fullscreen' : ''} src="https://cdn.discordapp.com/attachments/837242003862716436/1061886079285866596/index.png" />
+        <img onClick={() => setFullscreen(!fullscreen)} className={fullscreen ? 'fullscreen' : ''} src="http://localhost:8000/video_feed1/" />
 
         <div className="info">
           {(!accidents || !status) && (
