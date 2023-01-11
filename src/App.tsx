@@ -9,6 +9,7 @@ type StatusDto = {
 
 const App: FC = () => {
   const [fullscreen, setFullscreen] = useState(false)
+  const [vehicleFull, setVehicleFull] = useState(undefined)
   const [accidents, setAccidents] = useState<object | undefined>(undefined)
   const [stats, setStats] = useState<Record<string, number> | undefined>(undefined)
   const [status, setStatus] = useState<StatusDto | undefined>(undefined)
@@ -101,7 +102,8 @@ const App: FC = () => {
               {accidents.map((accident, i) => (
                 <tr key={i}>
                   <td>{accident.id}</td>
-                  <td><img className="car" src={accident.vehicle.picture} width={100} /></td>
+                  <td><img onClick={() => setVehicleFull(accident.vehicle.fullPicture)} className="car" src={accident.vehicle.picture} width={100} /></td>
+                  {vehicleFull !== undefined && <td><img onClick={() => setVehicleFull(undefined)} className="fullscreen" src={vehicleFull} /></td>}
                   <td>{accident.type.label}</td>
                   <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                 </tr>
