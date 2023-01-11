@@ -8,7 +8,6 @@ type StatusDto = {
 }
 
 const App: FC = () => {
-  const [fullscreen, setFullscreen] = useState(false)
   const [vehicleFull, setVehicleFull] = useState(undefined)
   const [accidents, setAccidents] = useState<object | undefined>(undefined)
   const [stats, setStats] = useState<Record<string, number> | undefined>(undefined)
@@ -49,8 +48,8 @@ const App: FC = () => {
 
   return (
     <div className="frame">
-      <div className="inner">
-        <img onClick={() => setFullscreen(!fullscreen)} className={fullscreen ? 'fullscreen' : ''} src="http://localhost:8000/video_feed1/" />
+      <div className="relative">
+        <img className="screen" src="http://localhost:8000/video_feed1/" />
 
         <div className="info">
           {(!accidents || !status) && (
@@ -80,7 +79,6 @@ const App: FC = () => {
           )}
         </div>
       </div>
-
 
       {accidents && (
         <div className="table">
