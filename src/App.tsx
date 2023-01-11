@@ -46,7 +46,7 @@ const App: FC = () => {
 
   return (
     <>
-      <img src="http://10.243.213.195:8000/video_feed1/" width={800} />
+      <img src="http://localhost:8000/video_feed1/" width={800} />
 
 
       {(!accidents || !status) && (
