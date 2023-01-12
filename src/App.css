@@ -29,14 +29,24 @@ ul {
 
 .relative {
   position: relative;
+  display: flex;
+  height: 100vh;
+  max-width: 100%;
+  align-items: center;
 }
 
 img.screen {
-  height: 100vh;
-  max-width: 100%;
   cursor: pointer;
   object-fit: contain;
-  object-position: top;
+}
+
+img.fullscreen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 100vh;
 }
 
 img.car {
@@ -46,7 +56,7 @@ img.car {
 
 .info {
   background-color: #252631;
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
   border: 1px solid #313136;
   padding: 15px;
   font-size: 20px;
@@ -54,9 +64,8 @@ img.car {
   right: 0;
   top: 0;
   font-weight: bold;
-  height: 100vh;
   box-sizing: border-box;
-  opacity: 0.9;
+  opacity: 0.8;
   min-width: 200px;
   transition: all 0.1s ease-in;
 }
@@ -69,6 +78,8 @@ img.car {
   padding: 15px;
   background-color: #252631;
   max-width: 500px;
+  height: 100vh;
+  overflow-y: scroll;
   border-radius: 10px;
   width: 100%;
   text-align: center;

@@ -49,7 +49,7 @@ const App: FC = () => {
   return (
     <div className="frame">
       <div className="relative">
-        <img className="screen" src="http://localhost:8000/video_feed1/" />
+        <img className="screen" src="https://cdn.discordapp.com/attachments/837242003862716436/1062552289207930940/image.png" />
 
         <div className="info">
           {(!accidents || !status) && (
@@ -101,15 +101,17 @@ const App: FC = () => {
                 <tr key={i}>
                   <td>{accident.id}</td>
                   <td><img onClick={() => setVehicleFull(accident.vehicle.fullPicture)} className="car" src={accident.vehicle.picture} width={100} /></td>
-                  {vehicleFull !== undefined && <td><img onClick={() => setVehicleFull(undefined)} className="fullscreen" src={vehicleFull} /></td>}
                   <td>{accident.type.label}</td>
                   <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+
         </div>
       )}
+
+      {vehicleFull !== undefined && <img onClick={() => setVehicleFull(undefined)} className="fullscreen" src={vehicleFull} />}
     </div>
   )
 }
