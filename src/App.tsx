@@ -53,7 +53,7 @@ const App: FC = () => {
     <>
     <div className="frame">
       <div className="container">
-        <h1><img src={car} width="40px" />&nbsp;신호위반 및 꼬리물기 검출 시스템</h1>
+        <h1><img src={car} width="40px" />&nbsp;실시간 교통위반검출시스템</h1>
         <div className="relative">
           <div className="relative2">
           <img className="screen" src="http://localhost:8000/video_feed1" />
