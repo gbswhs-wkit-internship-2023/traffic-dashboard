@@ -36,8 +36,7 @@ ul {
   flex-direction: column;
   height: 100vh;
   max-width: 100vw;
-  width: 75vw;
-  justify-content: center;  
+  width: 100vw;  
 }
 
 .container h1 {
@@ -46,8 +45,8 @@ ul {
   text-align: left;
 }
 
-.relative > img {
-  width: inherit;
+.relative  img {
+  width: 75vw;
   height: inherit;
   /* padding: 0 1vw; */
 }
@@ -55,12 +54,21 @@ ul {
 .relative {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 justify-content: center;
 
   width: inherit;
   height: fit-content;
 }
+
+.relative2 {
+  position: relative;
+  
+  width: fit-content;
+  height: fit-content;
+}
+
+
 img.screen {
   cursor: pointer;
   object-fit: contain;
@@ -104,7 +112,7 @@ img.car {
   padding: 15px;
   background-color: #252631;
   min-width: 365px;
-  height: 100vh;
+  height: 42.5vw;
   overflow-y: scroll;
   border-radius: 10px;
   width: 25vw;
