@@ -34,15 +34,14 @@ ul {
 .container {
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
+  height: 100vh;
   max-width: 100vw;
   width: 75vw;
-  
-  align-items: center;
+  justify-content: center;  
 }
 
 .container h1 {
-  /* padding: 0 1vw; */
+  padding:  1vw 3px;
   width: inherit;
   text-align: left;
 }
@@ -54,9 +53,13 @@ ul {
 }
 
 .relative {
-  width: inherit;
-  height: inherit;
   position: relative;
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+
+  width: inherit;
+  height: fit-content;
 }
 img.screen {
   cursor: pointer;

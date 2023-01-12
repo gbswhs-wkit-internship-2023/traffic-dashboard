@@ -50,7 +50,7 @@ const App: FC = () => {
     <>
     <div className="frame">
       <div className="container">
-        <h1>제목</h1>
+        <h1>신호위반 및 꼬리물기 검출 시스템</h1>
         <div className="relative">
         <img className="screen" src="http://localhost:8000/video_feed1" />
 
