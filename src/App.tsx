@@ -47,36 +47,40 @@ const App: FC = () => {
   }, [])
 
   return (
+    <>
     <div className="frame">
-      <div className="relative">
-        <img className="screen" src="https://cdn.discordapp.com/attachments/837242003862716436/1062552289207930940/image.png" />
+      <div className="container">
+        <h1>제목</h1>
+        <div className="relative">
+        <img className="screen" src="http://localhost:8000/video_feed1" />
 
-        <div className="info">
-          {(!accidents || !status) && (
-            <p>Loading...</p>
-          )}
-          
-          {status && (
-            <div>
-              <p>차량 수: {status.vehicleCount}대</p>
-              <p>교통 신호: <span style={{ color: status.trafficLight === 'GREEN' ? 'yellowgreen' : 'red' }}>{status.trafficLight}</span></p>
-            </div>
-          )}
+<div className="info">
+  {(!accidents || !status) && (
+    <p>Loading...</p>
+  )}
+  
+  {status && (
+    <div>
+      <p>차량 수: {status.vehicleCount}대</p>
+      <p>교통 신호: <span style={{ color: status.trafficLight === 'GREEN' ? 'yellowgreen' : 'red' }}>{status.trafficLight}</span></p>
+    </div>
+  )}
 
-          <hr />
+  <hr />
 
-          {stats && (
-            <div>
-              1시간 기준 위반수
-              <ul>
-                {Object.keys(stats).map((stat, i) => (
-                  <li key={i}>
-                    {stat}: {stats[stat]}대
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+  {stats && (
+    <div>
+      1시간 기준 위반수
+      <ul>
+        {Object.keys(stats).map((stat, i) => (
+          <li key={i}>
+            {stat}: {stats[stat]}대
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
         </div>
       </div>
 
@@ -105,6 +109,7 @@ const App: FC = () => {
                   <td>{moment(accident.createdAt).format('YYYY-MM-DD HH:mm')}</td>
                 </tr>
               ))}
+              
             </tbody>
           </table>
 
@@ -113,6 +118,7 @@ const App: FC = () => {
 
       {vehicleFull !== undefined && <img onClick={() => setVehicleFull(undefined)} className="fullscreen" src={vehicleFull} />}
     </div>
+    </>
   )
 }
 
